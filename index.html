@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sontake Adinath - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #764ba2;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 6rem 2rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero {
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="container hero">
+            <h1>Sontake Adinath</h1>
+            <p>Developer | Designer | Creator</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p style="text-align: center; font-size: 1.2rem; line-height: 1.8; color: #666;">
+                Hello! I'm Sontake Adinath, a passionate professional dedicated to creating innovative solutions 
+                and bringing ideas to life. With a strong foundation in technology and design, I strive to 
+                deliver excellence in every project I undertake. My approach combines creativity with technical 
+                expertise to solve complex problems and create meaningful experiences.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Web Development</h3>
+                    <p>Building responsive and dynamic web applications using modern technologies and frameworks.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>UI/UX Design</h3>
+                    <p>Creating intuitive and beautiful user interfaces with focus on user experience.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Problem Solving</h3>
+                    <p>Analytical thinking and innovative approaches to tackle complex challenges.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Team Collaboration</h3>
+                    <p>Effective communication and collaboration in diverse team environments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Project Alpha</h3>
+                    <p>A comprehensive solution that revolutionizes the way users interact with data visualization.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Project Beta</h3>
+                    <p>Innovative platform designed to streamline workflow and enhance productivity.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Project Gamma</h3>
+                    <p>Creative application that combines functionality with stunning visual design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+            <div class="social-links">
+                <a href="#" title="LinkedIn">in</a>
+                <a href="#" title="GitHub">git</a>
+                <a href="#" title="Twitter">tw</a>
+                <a href="#" title="Email">@</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Sontake Adinath. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            e.target.reset();
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
